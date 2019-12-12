@@ -6,7 +6,7 @@ class Student < InteractiveRecord
   self.column_names.each {|attr| attr_accessor attr.to_sym}
   
   def initialize(options = {})
-    options.each {|k,v| self.send("#{k}",v) }
+    options.each {|k,v| self.send("#{k.to_s}=",v) }
   end
   
 end
