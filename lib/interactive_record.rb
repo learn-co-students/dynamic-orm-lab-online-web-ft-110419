@@ -43,11 +43,11 @@ class InteractiveRecord
     DB[:conn].execute(sql,name)
   end
   
-  def self.find_by_name(options={})
+  def self.find_by(options={})
     sql = <<-SQL
-      SELECT * FROM #{self.table_name} WHERE name = 
+      SELECT * FROM #{self.table_name} WHERE #{options.first[0]} = '#{options.first[1]}'
     SQL
-    DB[:conn].execute(sql,name)
+    DB[:conn].execute(sql)
   end
   
 end
