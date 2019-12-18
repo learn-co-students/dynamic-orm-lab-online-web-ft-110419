@@ -19,11 +19,8 @@ class InteractiveRecord
   def self.column_names
     binding.pry
     array = []
-    sql = <<-SQL 
-      SELECT * FROM PRAGMA index_info
-
-    SQL
-    DB[:conn]
+    sql = "pragma table_info('#{table_name}')"
+    DB[:conn].execute(sql)
   end
   def initialize
   end
